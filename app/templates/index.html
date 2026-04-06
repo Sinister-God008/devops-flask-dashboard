@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DevOps Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<header>
+    <h1>&#9711; DevOps <span>Dashboard</span></h1>
+    <div class="badge">
+        <div class="dot"></div>
+        Live
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">&#128187;</span>
+                <span class="card-title">System Info</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Hostname</span>
+                <span class="info-value" id="hostname"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">IP Address</span>
+                <span class="info-value" id="ip"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Platform</span>
+                <span class="info-value" id="platform"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Python Version</span>
+                <span class="info-value" id="python"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Uptime</span>
+                <span class="info-value" id="uptime"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Last Updated</span>
+                <span class="info-value" id="timestamp"><span class="loading">loading...</span></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">&#9989;</span>
+                <span class="card-title">Health Check</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">App Status</span>
+                <span class="info-value status-healthy" id="health-status">loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Container</span>
+                <span class="info-value" id="container-status"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Checked At</span>
+                <span class="info-value" id="health-timestamp"><span class="loading">loading...</span></span>
+            </div>
+            <br/>
+            <div class="counter-box">
+                <div class="counter-number" id="request-count">0</div>
+                <div class="counter-label">Total API Requests</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">&#127981;</span>
+                <span class="card-title">Environment Variables</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">ENVIRONMENT</span>
+                <span class="info-value tag" id="env-environment"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">APP_VERSION</span>
+                <span class="info-value tag" id="env-version"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">REGION</span>
+                <span class="info-value tag" id="env-region"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">DEBUG</span>
+                <span class="info-value tag" id="env-debug"><span class="loading">loading...</span></span>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="refresh-note">Dashboard auto-refreshes every 5 seconds &bull; All data is live from the container</p>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
