@@ -11,6 +11,9 @@ services:
       - APP_VERSION=1.0.0
       - REGION=us-east-1
       - DEBUG=False
+      - SECRET_KEY=change-this-to-a-random-secret
+      - DASHBOARD_USER=admin
+      - DASHBOARD_PASS=admin123
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]

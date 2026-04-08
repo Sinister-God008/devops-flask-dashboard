@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>DevOps Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 
 <header>
     <h1>&#9711; DevOps <span>Dashboard</span></h1>
-    <div class="badge">
-        <div class="dot"></div>
-        Live
+    <div class="header-right">
+        <div class="badge">
+            <div class="dot"></div>
+            Live
+        </div>
+        <a href="/logout" class="logout-btn">Logout</a>
     </div>
 </header>
 
@@ -44,6 +49,10 @@
             <div class="info-row">
                 <span class="info-label">Uptime</span>
                 <span class="info-value" id="uptime"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Last Restart</span>
+                <span class="info-value" id="last-restart"><span class="loading">loading...</span></span>
             </div>
             <div class="info-row">
                 <span class="info-label">Last Updated</span>
@@ -99,7 +108,46 @@
         </div>
 
     </div>
-
+    <div class="card">
+            <div class="card-header">
+                <span class="card-icon">&#128200;</span>
+                <span class="card-title">Container Resources</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">CPU Usage</span>
+                <span class="info-value" id="cpu-percent"><span class="loading">loading...</span></span>
+            </div>
+            <div class="stat-bar-wrapper">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill cpu-fill" id="cpu-bar"></div>
+                </div>
+            </div>
+            <div class="info-row" style="margin-top: 16px;">
+                <span class="info-label">Memory Usage</span>
+                <span class="info-value" id="memory-percent"><span class="loading">loading...</span></span>
+            </div>
+            <div class="stat-bar-wrapper">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill mem-fill" id="mem-bar"></div>
+                </div>
+            </div>
+            <div class="info-row" style="margin-top: 16px;">
+                <span class="info-label">Memory Used</span>
+                <span class="info-value" id="memory-used"><span class="loading">loading...</span></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Total Memory</span>
+                <span class="info-value" id="memory-total"><span class="loading">loading...</span></span>
+            </div>
+        </div>
+        <div class="card chart-card">
+            <div class="card-header">
+                <span class="card-icon">&#128202;</span>
+                <span class="card-title">Request History</span>
+            </div>
+            <canvas id="requestChart" height="120"></canvas>
+        </div>
+    </div>
     <p class="refresh-note">Dashboard auto-refreshes every 5 seconds &bull; All data is live from the container</p>
 
 </div>

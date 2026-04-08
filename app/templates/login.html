@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login — DevOps Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+<header>
+    <h1>&#9711; DevOps <span>Dashboard</span></h1>
+    <div class="badge">
+        <div class="dot"></div>
+        Secured
+    </div>
+</header>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-icon">&#128274;</div>
+        <h2 class="login-title">Authentication Required</h2>
+        <p class="login-subtitle">Sign in to access the dashboard</p>
+
+        {% if error %}
+        <div class="login-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    class="form-input"
+                    placeholder="Enter username"
+                    required
+                    autocomplete="username"
+                />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    class="form-input"
+                    placeholder="Enter password"
+                    required
+                    autocomplete="current-password"
+                />
+            </div>
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+
+        <p class="login-hint">Default: admin / admin123</p>
+    </div>
+</div>
+
+</body>
+</html>
