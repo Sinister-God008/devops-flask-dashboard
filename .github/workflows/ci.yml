@@ -45,3 +45,6 @@ jobs:
       - name: Deployment success notification
         if: success()
         run: echo "Build, scan, and push completed successfully."
+      - name: Trigger Render deployment
+        if: github.ref == 'refs/heads/main'
+        run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"
